@@ -1,0 +1,159 @@
+html, body {
+  margin: 0;
+  color: #8a1450;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #ffd6ea;
+  background-image:
+    radial-gradient(circle, #fff 1.2px, transparent 1.6px),
+    radial-gradient(circle, #ff9fd0 1px, transparent 1.4px),
+    radial-gradient(circle, #fff6 2px, transparent 2.5px);
+  background-size: 38px 38px, 57px 57px, 91px 91px;
+  background-position: 0 0, 19px 23px, 40px 11px;
+}
+* { box-sizing: border-box; }
+a { color: #e0368a; }
+a:hover { color: #8a1450; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(.4) rotate(0); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+@keyframes pop {
+  from { transform: scale(.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.page { position: relative; overflow: hidden; min-height: 100vh; }
+
+.sparkles { position: absolute; inset: 0; pointer-events: none; }
+.sparkles span {
+  position: absolute;
+  text-shadow: 0 0 8px #fff;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+main {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+/* 01 Start */
+.start { padding-top: 72px; }
+h1 {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: clamp(52px, 10vw, 96px);
+  line-height: 1.15;
+  color: #e0368a;
+  text-shadow: 3px 3px 0 #fff;
+}
+.hero-frame {
+  width: min(420px, 100%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 0 0 6px #ff9fd0, 0 0 40px #ff6fb5;
+}
+.hero-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.greeting {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 28em;
+  text-wrap: pretty;
+}
+.counter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 40px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 6px 0 #ff9fd0;
+}
+.counter-days {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(44px, 8vw, 64px);
+  line-height: 1.3;
+  color: #e0368a;
+}
+.counter-label { font-size: 17px; font-weight: 700; }
+
+/* 02 Gründ */
+h2 {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: clamp(36px, 7vw, 56px);
+  line-height: 1.3;
+  color: #e0368a;
+  text-shadow: 2px 2px 0 #fff;
+}
+.reason-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.reason {
+  min-height: 150px;
+  padding: 12px;
+  overflow-wrap: anywhere;
+  border-radius: 20px;
+  font: inherit;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.35;
+  cursor: pointer;
+  border: 0;
+  background: linear-gradient(135deg, #ff6fb5, #e0368a);
+  color: #fff;
+  box-shadow: 0 5px 0 #c2287a;
+}
+.reason.open {
+  font-size: 17px;
+  font-weight: 700;
+  cursor: default;
+  border: 3px solid #ff9fd0;
+  background: #fff;
+  color: #8a1450;
+  animation: pop .35s ease-out;
+}
+
+footer {
+  padding: 0 0 64px;
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  text-align: center;
+  color: #e0368a;
+}

@@ -50,7 +50,6 @@ html.unlocked .pin-gate { display: none; }
   color: #e0368a;
   text-shadow: 3px 3px 0 #fff;
 }
-.pin-label { font-size: 18px; font-weight: 700; }
 .pin-input {
   width: min(280px, 100%);
   padding: 14px 20px;
@@ -65,6 +64,13 @@ html.unlocked .pin-gate { display: none; }
   color: #8a1450;
   outline: none;
 }
+.pin-input::placeholder {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #ff9fd0;
+}
+.pin-input:placeholder-shown { text-indent: 0; }
 .pin-input:focus { border-color: #e0368a; }
 .pin-input.wrong { animation: shake .4s ease-in-out; border-color: #e0368a; }
 .pin-error { min-height: 1.4em; font-weight: 700; color: #e0368a; }

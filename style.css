@@ -69,6 +69,7 @@ h1 {
 .hero-frame {
   width: min(420px, 100%);
   aspect-ratio: 1;
+  overflow: hidden;
   border-radius: 50%;
   padding: 10px;
   background: #fff;
@@ -80,6 +81,7 @@ h1 {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 50% 75%;
 }
 .greeting {
   margin: 0;

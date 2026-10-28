@@ -8,8 +8,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>try { if (localStorage.getItem('rebi-elias-pin') === 'ok') document.documentElement.classList.add('unlocked'); } catch (e) {}</script>
 </head>
 <body>
+<form class="pin-gate" id="pin-gate" autocomplete="off">
+  <div class="pin-title">Für Rebi ♥</div>
+  <label class="pin-label" for="pin-input">Gib dä PIN ii</label>
+  <input class="pin-input" id="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autofocus>
+  <div class="pin-error" id="pin-error" aria-live="polite"></div>
+  <button class="pin-button" type="submit">Ufmache ♥</button>
+</form>
 <div class="page">
   <div class="sparkles" id="sparkles" aria-hidden="true"></div>
   <main>

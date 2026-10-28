@@ -1,5 +1,47 @@
 (function () {
   var STORAGE_KEY = 'rebi-elias';
+  var PIN_KEY = 'rebi-elias-pin';
+  // SHA-256 vom PIN, dass er nöd im Klartext im Code staht
+  var PIN_HASH = '24e43df12e68c74a4bfe2d6c2dd6c62ac9956413027a1cc48aaac9b4e67ad782';
+
+  // PIN-Schloss
+  var gate = document.getElementById('pin-gate');
+  var pinInput = document.getElementById('pin-input');
+  var pinError = document.getElementById('pin-error');
+
+  function sha256(text) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+    });
+  }
+
+  function checkPin() {
+    sha256(pinInput.value).then(function (hash) {
+      if (hash === PIN_HASH) {
+        try { localStorage.setItem(PIN_KEY, 'ok'); } catch (e) {}
+        document.documentElement.classList.add('unlocked');
+        window.scrollTo(0, 0);
+      } else {
+        pinError.textContent = 'Falsche PIN, probier nomol ♡';
+        pinInput.classList.remove('wrong');
+        void pinInput.offsetWidth;
+        pinInput.classList.add('wrong');
+        pinInput.value = '';
+        pinInput.focus();
+      }
+    });
+  }
+
+  gate.addEventListener('submit', function (e) {
+    e.preventDefault();
+    checkPin();
+  });
+  pinInput.addEventListener('input', function () {
+    pinInput.value = pinInput.value.replace(/\D/g, '');
+    if (pinInput.value.length === 6) checkPin();
+  });
 
   // Tageszähler sit em 31.10.2024
   var days = Math.floor((new Date() - new Date(2024, 9, 31)) / 864e5);
